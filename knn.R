@@ -4,6 +4,9 @@ library(readr)
 library(lubridate)
 library(caret)
 
+
+### Classification KNN
+
 # Import the datasets.
 # 'red' is the red wine dataset
 # 'white' is the white wine dataset.

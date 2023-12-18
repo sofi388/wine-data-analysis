@@ -7,8 +7,6 @@ library(ggplot2)
 library(corrplot)
 library(caret)
 
-
-
 ### Preprocessing:
 
 # 0. Loading and viewing dataset
@@ -76,10 +74,8 @@ pairs(df[, highly_correlated])
 
 
 ### Clustering 
-#Apply k-means clustering to analyze wine quality data. Utilize only input
-#variables and exclude output variables (quality and type) from the analysis.
-
-#ready dataset: df
+# Apply k-means clustering to analyze wine quality data. Utilize only input
+# variables and exclude output variables (quality and type) from the analysis.
 
 # 1. Scaling
 scaled_df <- scale(df)
@@ -125,28 +121,3 @@ ggplot(cluster_distribution_df_long, aes(x = Cluster, y = Count, fill = Type)) +
        x = "Cluster",
        y = "Count",
        fill = "Wine Type")
-
-
-### Classification
-#Classification: Utilize K nearest neighbor classification algorithm to predict the wine type based
-#on the input variables (do not use the quality variable)
-# Deleting density and output columns
-
-
-library(ggplot2)
-
-# Assuming your dataset is named your_data
-# Replace your_data with your actual dataset name
-
-# Melt the data into long format
-melted_data <- reshape2::melt(Wine_quality)
-
-# Create boxplots with facets
-ggplot(melted_data, aes(x = variable, y = value)) +
-  geom_boxplot() +
-  facet_wrap(~variable, scales = "free") +
-  labs(title = "Boxplot of All Variables",
-       caption = "Source: your_data dataset.") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-
